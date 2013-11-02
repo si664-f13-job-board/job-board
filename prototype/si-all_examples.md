@@ -95,7 +95,7 @@ Graphic Designer
 Programmer (android/iOS)
 
 For more information on the competition and to see the currently proposed projects:
-http://www.sph.umich.edu/iia/teams/team-central.html
+[link]
 
 If you think you can contribute to AthlEAT please leave comments on the AthlEAT info page and email me.
 
