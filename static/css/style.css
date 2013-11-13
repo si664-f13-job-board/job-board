@@ -1,0 +1,74 @@
+body{
+	font-family: "Helvetica";
+}
+
+div{
+	/*borderline for visualizing divs. 
+	can be removed later*/
+	/*border: 1px solid silver;		*/
+	padding: 10px;
+}
+
+a{
+	text-decoration: none;
+	color: black;
+}
+
+.clear{
+	clear:both;
+	height:0px;
+	padding: 0px;
+}
+
+#wrapper{
+	margin-left:auto;
+	margin-right:auto;
+	width:70%;
+	/*background-color:gray;*/
+}
+
+#header{
+	font-size: 200%;
+	text-align: center;
+}
+
+#login{
+	text-align: right;
+	font-size: 90%;
+}
+
+.loginButtonWrapper{
+	float: right;
+}
+
+.loginButton{
+	border: 1px solid silver;
+	margin-top: 5px;
+	margin-bottom: 5px;	
+	padding: 10px;
+	text-align: center;
+}
+
+#contents{
+	border: 1px solid silver;
+}
+
+#jobListings{
+	/*border: 1px solid silver;*/
+}
+
+#jobListingsTitle{
+	font-size: 150%;
+	text-align: center;
+}
+
+.jobDetails{
+	font-size: 90%;
+	border: 1px solid silver;
+	line-height: 200%;
+}
+
+#footer{
+	font-size: 60%;
+	text-align: center;
+}
