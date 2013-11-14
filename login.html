@@ -1,23 +1,36 @@
-<form method="post" action="create_listing.html">
-    
-    <label>First Name:</label>
-        <input type="text" id="first_name" name="first_name" required></br>
-    </br>
-    <label>Last Name:</label>
-        <input type="text" id="last_name" name="last_name" required></br>
-    </br>
-    <label>Email Address:</label>
-        <input type="email" id="email_addr" name="email_addr" placeholder="email@emailaddress.com"required></br>
-    </br>
-    <label>Your Job Title:</label>
-        <input type="text" id="job_title" name="job_title" required></br>
-    </br>
-    <label>Company/Organization:</label>
-        <input type="text" id="company" name="company" required></br>
-    </br>
-    <label>Password:</label>
-        <input type="password" id="password" name="password"required></br>
-    </br>
-	<input type="submit" formenctype="multipart/form-data"
- 		value="Submit">
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Job Board</title>
+	<link href="static/css/style.css" rel="stylesheet">
+</head>
+<body>
+<div id="wrapper"> 
+	<h1>LOGIN</h1>
+	<form method="post" action="create_listing.html">
+		<label>First Name:</label>
+			<input type="text" id="first_name" name="first_name" required></br>
+		</br>
+		<label>Last Name:</label>
+			<input type="text" id="last_name" name="last_name" required></br>
+		</br>
+		<label>Email Address:</label>
+			<input type="email" id="email_addr" name="email_addr" placeholder="email@emailaddress.com"required></br>
+		</br>
+		<label>Your Job Title:</label>
+			<input type="text" id="job_title" name="job_title" required></br>
+		</br>
+		<label>Company/Organization:</label>
+			<input type="text" id="company" name="company" required></br>
+		</br>
+		<label>Password:</label>
+			<input type="password" id="password" name="password"required></br>
+		</br>
+		<input type="submit" formenctype="multipart/form-data"
+			value="Submit">
+	</form>
+</div>
+
+</body>
+</html>
