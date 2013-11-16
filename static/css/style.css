@@ -1,74 +1,109 @@
 body{
-	font-family: "Helvetica";
+	padding-top: 50px;
+	background-color: #F0F0F0;
 }
-
-div{
-	/*borderline for visualizing divs. 
-	can be removed later*/
-	/*border: 1px solid silver;		*/
-	padding: 10px;
+.navbar-inverse{
+	background-color: #002277;
+	border-color: #001854;
 }
-
-a{
-	text-decoration: none;
-	color: black;
+.navbar-inverse .navbar-brand{
+	color: #EFC310;
 }
-
-.clear{
-	clear:both;
-	height:0px;
-	padding: 0px;
+.navbar-inverse .navbar-brand:hover{
+	color: #FAD53E;
 }
-
-#wrapper{
-	margin-left:auto;
-	margin-right:auto;
-	width:70%;
-	/*background-color:gray;*/
+.nav.navbar-nav.pull-right>li>a:hover{
+	background-color: #0E338F;
 }
-
-#header{
-	font-size: 200%;
+.job_listing{
+	border: 1px solid silver;
+	padding: 8px 16px;
+	margin-bottom: 8px;
+	background-color: #F6F6F6;
+}
+.footer{
 	text-align: center;
+	padding-top: 25px;
+	padding-bottom: 25px;
 }
 
-#login{
+/* login */
+.login_container{
+	width: 500px;
+	margin: auto;
+}
+.login_container h1{
+}
+.login_box{
+	border: 1px solid silver;
+	padding: 16px 25px;
+	margin-bottom: 8px;
+	background-color: #F6F6F6;
+}
+.login_box input{
+	width: 300px;
+}
+.login_box input.login_button{
+	width: 150px;
+	height: 2.25em;
+}
+
+/* account */
+.account_container{
+	width: 500px;
+	margin: auto;
+}
+.account_container h1{
+}
+.account_box{
+	border: 1px solid silver;
+	padding: 16px 25px;
+	margin-bottom: 8px;
+	background-color: #F6F6F6;
+}
+.account_box input{
+	width: 300px;
+	margin-bottom: 12px;
+}
+.account_box input.account_button{
+	width: 200px;
+	height: 2.25em;
+}
+
+/* listing */
+.listing_container{
+	width: 600px;
+	margin: auto;
+}
+.listing_container h1{
+}
+.listing_box{
+	border: 1px solid silver;
+	padding: 16px 25px;
+	margin-bottom: 8px;
+	background-color: #F6F6F6;
+}
+.listing_container .col1{
+	width: 30%;
+	display: inline-block;
 	text-align: right;
-	font-size: 90%;
+	margin-right: 10px;
+	vertical-align: top;
 }
-
-.loginButtonWrapper{
-	float: right;
+.listing_container .col1 label{
+	line-height: 28px;
 }
-
-.loginButton{
-	border: 1px solid silver;
-	margin-top: 5px;
-	margin-bottom: 5px;	
-	padding: 10px;
-	text-align: center;
+.listing_container .col2{
+	width: 65%;
+	display: inline-block;
 }
-
-#contents{
-	border: 1px solid silver;
+.listing_container .col2 input{
+	width: 100%;
+	height: 27px;
+	margin-top: 2px;
+	margin-bottom: 4px;
 }
-
-#jobListings{
-	/*border: 1px solid silver;*/
-}
-
-#jobListingsTitle{
-	font-size: 150%;
-	text-align: center;
-}
-
-.jobDetails{
-	font-size: 90%;
-	border: 1px solid silver;
-	line-height: 200%;
-}
-
-#footer{
-	font-size: 60%;
-	text-align: center;
+.listing_container .col2 input.create_button{
+	width: 75%;
+	height: 2.25em;
 }
