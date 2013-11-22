@@ -14,8 +14,9 @@ CREATE TABLE listing (
 	employer_id MEDIUMINT,
 	date DATE,
 	end_date DATE,
-	location VARCHAR(255),
+	remote TINYINT,
 	link VARCHAR(255),
-	desc VARCHAR,
+	description LONGTEXT,
+	skills LONGTEXT,
 	PRIMARY KEY (id)
  ) ENGINE = InnoDB DEFAULT CHARSET=utf8;
