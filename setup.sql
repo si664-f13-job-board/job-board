@@ -12,11 +12,22 @@ CREATE TABLE employer (
 CREATE TABLE listing (
 	id MEDIUMINT NOT NULL AUTO_INCREMENT,
 	employer_id MEDIUMINT,
+	title VARCHAR(255),
+	remote TINYINT,
+	paid TINYINT,
+	hours MEDIUMINT,
 	date DATE,
 	end_date DATE,
-	remote TINYINT,
-	link VARCHAR(255),
 	description LONGTEXT,
 	skills LONGTEXT,
+	link VARCHAR(255),
+	email VARCHAR(255),
+	name VARCHAR(255),
+	
+	CONTRAINT `employer_ref`
+		FOREIGN KEY (`employer_id`)
+		REFERENCES `employer` (`id`),
+		
 	PRIMARY KEY (id)
+
  ) ENGINE = InnoDB DEFAULT CHARSET=utf8;
