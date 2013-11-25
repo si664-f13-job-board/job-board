@@ -18,12 +18,11 @@
 			<div class="col1">
 				<label for="employer">Employer:</label><br />
 				<label for="position">Position Title:</label><br />
-				<label for="remote">Remote Location:</label><br />
+				<label for="remote">Remote Work:</label><br />
 				<label for="pay">Pay:</label><br />
 				<label for="hours">Hours per Week:</label><br />
 				<label for="contact">Contact:</label><br />
 				<label for="email">Contact Email:</label><br />
-				<label for="num">Contact Phone:</label><br />
 				<label for="postdate">Posting Date: </label><br />
 				<label for="enddate">End Date:</label><br />
 				<label for="desc">Brief Description:</label><br />
@@ -38,7 +37,6 @@
 				<input type="number" name="hours" required><br />
 				<input type="text" name="contact" required><br />
 				<input type="email" name="email" required><br />
-				<input type="number" name="num" required><br />
 				<input type="date" name="postdate" required><br />
 				<input type="date" name="enddate" required><br />
 				<input type="text" name="desc" required><br />
