@@ -1,3 +1,11 @@
+drop database if exists jobboard;
+create database jobboard DEFAULT CHARACTER SET utf8;
+
+use jobboard;
+
+drop table if exists employer;
+drop table if exists listing;
+
 CREATE TABLE employer (
 	id MEDIUMINT NOT NULL AUTO_INCREMENT,
 	first VARCHAR(255),
@@ -9,35 +17,35 @@ CREATE TABLE employer (
 	PRIMARY KEY (id)
  ) ENGINE = InnoDB DEFAULT CHARSET=utf8;
  
--- added position and salary field
-CREATE TABLE listing (
-	id MEDIUMINT NOT NULL AUTO_INCREMENT,
-	employer_id MEDIUMINT,
-<<<<<<< HEAD
-	position VARCHAR(255),
-	salary VARCHAR(255),
-=======
+ CREATE TABLE listing (
+    id MEDIUMINT NOT NULL AUTO_INCREMENT,
+    employer_id MEDIUMINT,
 	title VARCHAR(255),
 	remote TINYINT,
 	paid TINYINT,
 	hours MEDIUMINT,
->>>>>>> 8ca14504ceecfae6cb0f90ec36bfc15cf70c6075
 	date DATE,
 	end_date DATE,
+	remote TINYINT,
+	link VARCHAR(255),
 	description LONGTEXT,
 	skills LONGTEXT,
 	link VARCHAR(255),
-<<<<<<< HEAD
-	descr VARCHAR(4096),
-=======
 	email VARCHAR(255),
 	name VARCHAR(255),
 	
-	CONTRAINT `employer_ref`
-		FOREIGN KEY (`employer_id`)
-		REFERENCES `employer` (`id`),
-		
->>>>>>> 8ca14504ceecfae6cb0f90ec36bfc15cf70c6075
+	CONSTRAINT `employer_ref`
+	  FOREIGN KEY (`employer_id`)
+	  REFERENCES `employer` (`id`),
+	  
 	PRIMARY KEY (id)
+	
+   ) ENGINE = InnoDB DEFAULT CHARSET=utf8;
 
- ) ENGINE = InnoDB DEFAULT CHARSET=utf8;
+insert into employer (first, last, email, organization, username, password) values (
+	'test_first', 'test_last', 'test_email', 'test_org', 'test_user', 'test_pw');
+
+insert into listing (employer_id, title, remote, paid, hours, date, end_date, description, skills) values (
+	'1', 'test_title', '1', '1', '10', '20010101', '20020101', 'test_long_descrpt', 'test_long_skills');
+insert into listing (employer_id, title, remote, paid, hours, date, end_date, description, skills) values (
+	'1', 'test_title222', '1', '1', '10', '20010101', '20020101', 'test_long_descrpt', 'test_long_skills')

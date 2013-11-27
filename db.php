@@ -6,9 +6,8 @@ try{
 } catch (Exception $ex){
 	die($ex -> getMessage());
 }
-	// var_dump($pdo);
-$db = mysql_connect("localhost","root", "root")
-   or die('Fail message');
-mysql_select_db("jobboard") or die("Fail message");
+// $db = mysql_connect("localhost","root", "root")
+//    or die('Fail message');
+// mysql_select_db("jobboard") or die("Fail message");
 
 ?>
