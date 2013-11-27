@@ -9,13 +9,16 @@ CREATE TABLE employer (
 	PRIMARY KEY (id)
  ) ENGINE = InnoDB DEFAULT CHARSET=utf8;
  
+-- added position and salary field
 CREATE TABLE listing (
 	id MEDIUMINT NOT NULL AUTO_INCREMENT,
 	employer_id MEDIUMINT,
+	position VARCHAR(255),
+	salary VARCHAR(255),
 	date DATE,
 	end_date DATE,
 	location VARCHAR(255),
 	link VARCHAR(255),
-	desc VARCHAR,
+	descr VARCHAR(4096),
 	PRIMARY KEY (id)
  ) ENGINE = InnoDB DEFAULT CHARSET=utf8;
