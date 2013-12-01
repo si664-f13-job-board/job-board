@@ -1,4 +1,5 @@
 <?php
+	require_once "db.php";
     session_start();
 	if ( !isset($_SESSION["account"]) ) {
         $_SESSION["error"] = "Please sign in.";
@@ -14,35 +15,55 @@
 		<h1>CREATE NEW JOB LISTING</h1>
 	</div>
 	<div class="listing_container listing_box">
-		<form>
-			<div class="col1">
-				<label for="employer">Employer:</label><br />
-				<label for="position">Position Title:</label><br />
-				<label for="remote">Remote Work:</label><br />
-				<label for="pay">Pay:</label><br />
-				<label for="hours">Hours per Week:</label><br />
-				<label for="contact">Contact:</label><br />
-				<label for="email">Contact Email:</label><br />
-				<label for="postdate">Posting Date: </label><br />
-				<label for="enddate">End Date:</label><br />
-				<label for="desc">Brief Description:</label><br />
-				<label for="skills">Skills Needed:</label><br />
-				<label for="apply">How to Apply:</label><br />
+		<form method="post">
+			<div>
+				<div class="col1"><label for="title">Position Title:</label></div>
+				<div class="col2"><input type="text" name="title" required></div>
 			</div>
-			<div class="col2">
-				<input type="text" name="employer" required><br />
-				<input type="text" name="position" required><br />
-				<input type="text" name="remote" required><br />
-				<input type="text" name="pay" required><br />
-				<input type="number" name="hours" required><br />
-				<input type="text" name="contact" required><br />
-				<input type="email" name="email" required><br />
-				<input type="date" name="postdate" required><br />
-				<input type="date" name="enddate" required><br />
-				<input type="text" name="desc" required><br />
-				<input type="text" name="skills" required><br />
-				<input type="text" name="apply" required><br />
-				<input class="create_button" type="submit" value="Create Listing">
+			<div>
+				<div class="col1"><label for="remote">Remote Work:</label></div>
+				<div class="col2"><select name="remote" required>
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</select></div>
+			</div>
+			<div>
+				<div class="col1"><label for="paid">Paid:</label></div>
+				<div class="col2"><select name="paid" required>
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</select></div>
+			</div>
+			<div>
+				<div class="col1"><label for="hours">Hours per Week:</label></div>
+				<div class="col2"><input type="number" name="hours" required></div>
+			</div>
+			<div>
+				<div class="col1"><label for="name">Name of Contact:</label></div>
+				<div class="col2"><input type="text" name="name" required></div>
+			</div>
+			<div>
+				<div class="col1"><label for="email">Contact Email:</label></div>
+				<div class="col2"><input type="email" name="email" required></div>
+			</div>
+			<div>
+				<div class="col1"><label for="link">Link to Listing:</label></div>
+				<div class="col2"><input type="text" name="link" ></div>
+			</div>
+			<div>
+				<div class="col1"><label for="end_date">End Date:</label></div>
+				<div class="col2"><input type="date" name="end_date" required></div>
+			</div>
+			<div>
+				<div class="col1"><label for="description">Brief Description:</label></div>
+				<div class="col2"><input type="text" name="description" required></div>
+			</div>
+			<div>
+				<div class="col1"><label for="skills">Skills Needed:</label></div>
+				<div class="col2"><input type="text" name="skills" required></div>
+			</div>
+			<div>
+				<div class="col2"><input class="create_button" type="submit" value="Create Listing">
 			</div>
 		</form>
 	</div>
