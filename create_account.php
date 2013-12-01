@@ -1,22 +1,29 @@
 <?php
+	require_once "db.php";
     session_start();
     unset($_SESSION["account"]);
-    if ( isset($_POST["account"]) && isset($_POST["pw"]) ) {
-        if ( $_POST['pw'] == 'password' ) {
-            $_SESSION["account"] = $_POST["account"];
-            $_SESSION["success"] = "Logged in.";
-            header( 'Location: index.php' ) ;
-            return;
-        } else {
-            $_SESSION["error"] = "Incorrect password.";
-            header( 'Location: login.php' ) ;
-            return;
-        }
-    } else if ( count($_POST) > 0 ) {
-        $_SESSION["error"] = "Missing Required Information";
-        header( 'Location: login.php' ) ;
-        return; 
-    }      
+    if ( isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["name"]) && isset($_POST["organization"]) ) {
+		$e = mysql_real_escape_string($_POST["email"]);
+		$p = mysql_real_escape_string($_POST["password"]);
+		$n = mysql_real_escape_string($_POST["name"]);
+		$o = mysql_real_escape_string($_POST["organization"]);
+		
+		if ( strlen($e) == 0 || strlen($p) == 0 || strlen($n) == 0 || strlen($o) == 0) {
+			$_SESSION['message'] = 'Bad value for email, password, name, or organization.';
+			header( 'Location: create_account.php' );
+			return;
+		}
+		
+		$sql = "INSERT INTO employer (email, password, name, organization) VALUES (:email, :password, :name, :organization)";
+		$q = $pdo -> prepare($sql);
+		$q -> execute(array(':email'=>$e, ':password'=>$p, ':name'=>$n, ':organization'=>$o));
+		
+		$employer_id = $pdo->query("SELECT id FROM employer WHERE email='".$e."' AND password='".$p."'");
+		
+		$_SESSION['account'] = $employer_id;
+		$_SESSION['message'] = 'Account Created!';
+		header( 'Location: login.php' );
+	}
 ?>
 
 <?php include "header.php" ?>
@@ -26,23 +33,18 @@
 		<h1>CREATE ACCOUNT</h1>
 	</div>
 	<div class="account_container account_box">
-
-	<form method="post">
-		<label for="email_addr">Email:</label><br />
-		<input type="email" id="email_addr" name="email_addr" required><br />
-		<label for="password">Password:</label><br />
-		<input type="password" id="password" name="password"required><br />
-		<label for="first_name">First Name:</label><br />
-		<input type="text" id="first_name" name="first_name" required><br />
-		<label for="last_name">Last Name:</label><br />
-		<input type="text" id="last_name" name="last_name" required><br />
-		<label for="job_title">Job Title:</label><br />
-		<input type="text" id="job_title" name="job_title" required><br />
-		<label for="company">Company/Organization:</label><br />
-		<input type="text" id="company" name="company" required><br />
-		<br />
-		<input class="create_button" type="submit" value="Create Account">
-	</form>
+		<form method="post">
+			<label for="email">Email:</label><br />
+			<input type="email" id="email" name="email" required><br />
+			<label for="password">Password:</label><br />
+			<input type="password" id="password" name="password"required><br />
+			<label for="name">Name:</label><br />
+			<input type="text" id="name" name="name" required><br />
+			<label for="organization">Company/Organization:</label><br />
+			<input type="text" id="organization" name="organization" required><br />
+			<br />
+			<input class="create_button" type="submit" value="Create Account">
+		</form>
 	</div>
 </div>
 
