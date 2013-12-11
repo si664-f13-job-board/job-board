@@ -33,7 +33,7 @@
 				 , employer.organization
 			FROM   listing
 			       JOIN employer
-				   ON listing.employer_id = employer.id");
+				   ON listing.employer_id = employer.employer_id");
 
 		while($row = $listing_results -> fetch(PDO::FETCH_ASSOC)){
 			echo '<div class="job_listing">';

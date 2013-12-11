@@ -6,10 +6,10 @@
 		$e = mysql_real_escape_string($_POST["email"]);
 		$p = mysql_real_escape_string($_POST["password"]);
 		
-		$row = $pdo->query("SELECT id, password FROM employer WHERE email='".$e."' LIMIT 1")->fetch(PDO::FETCH_ASSOC);
-		if ( $row['id'] > 0 ) {
+		$row = $pdo->query("SELECT employer_id, password FROM employer WHERE email='".$e."' LIMIT 1")->fetch(PDO::FETCH_ASSOC);
+		if ( $row['employer_id'] > 0 ) {
 			if ( $p == $row['password'] ) {
-			$_SESSION['account'] = $row['id'];
+			$_SESSION['account'] = $row['employer_id'];
 			header( 'Location: my_listings.php' );
 			}
 			else {

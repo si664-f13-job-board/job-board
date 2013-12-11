@@ -7,16 +7,16 @@ DROP TABLE IF EXISTS listing;
 DROP TABLE IF EXISTS employer;
 
 CREATE TABLE employer (
-	id MEDIUMINT NOT NULL AUTO_INCREMENT,
+	employer_id MEDIUMINT NOT NULL AUTO_INCREMENT,
 	email VARCHAR(255),
 	password VARCHAR(255),
 	name VARCHAR(255),
 	organization VARCHAR(255),
-	PRIMARY KEY (id)
+	PRIMARY KEY (employer_id)
  ) ENGINE = InnoDB DEFAULT CHARSET=utf8;
  
 CREATE TABLE listing (
-    id MEDIUMINT NOT NULL AUTO_INCREMENT,
+    listing_id MEDIUMINT NOT NULL AUTO_INCREMENT,
     employer_id MEDIUMINT,
 	title VARCHAR(255),
 	remote TINYINT,
@@ -30,8 +30,8 @@ CREATE TABLE listing (
 	name VARCHAR(255),
 	email VARCHAR(255),
 	
-	PRIMARY KEY (id),
-	FOREIGN KEY (employer_id) REFERENCES employer (id)
+	PRIMARY KEY (listing_id),
+	FOREIGN KEY (employer_id) REFERENCES employer (employer_id)
 	
    ) ENGINE = InnoDB DEFAULT CHARSET=utf8;
 

@@ -19,7 +19,7 @@
 		}
 		
 	    $sql = "
-			SELECT listing.id
+			SELECT listing.listing_id
 			     , listing.title
 			     , listing.description
 				 , listing.skills
@@ -34,14 +34,14 @@
 				 , employer.organization
 			FROM   listing
 			       JOIN employer
-				   ON listing.employer_id = employer.id
-			WHERE  employer.id = :id";
+				   ON listing.employer_id = employer.employer_id
+			WHERE  employer.employer_id = :employer_id";
 		$listing_results = $pdo -> prepare($sql);
-		$listing_results -> execute(array(':id'=>$_SESSION['account']));
+		$listing_results -> execute(array(':employer_id'=>$_SESSION['account']));
 		
 		while($row = $listing_results -> fetch(PDO::FETCH_ASSOC)){
 			echo '<div class="job_listing">';
-			echo '<a href="edit_listing.php?id='.$row['id'].'">Edit</a></br>';
+			echo '<a href="edit_listing.php?listing_id='.$row['listing_id'].'">Edit</a></br>';
 			echo 'EMPLOYER/COMPANY: '.$row['organization'].'</br>';
 			echo 'TITLE: '.$row['title'].'</br>';
 			echo 'REMOTE: '.boolToString($row['remote']).'</br>';

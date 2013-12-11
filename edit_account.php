@@ -7,19 +7,19 @@
         return; 
     }
 	else {
-		$row = $pdo->query("SELECT email, name, organization FROM employer WHERE id='".$_SESSION["account"]."'")->fetch(PDO::FETCH_ASSOC);
+		$row = $pdo->query("SELECT email, name, organization FROM employer WHERE employer_id='".$_SESSION["account"]."'")->fetch(PDO::FETCH_ASSOC);
 	}
 	if ( isset($_POST["email"]) && isset($_POST["name"]) && isset($_POST["organization"]) ) {
 		$e = mysql_real_escape_string($_POST["email"]);
 		$n = mysql_real_escape_string($_POST["name"]);
 		$o = mysql_real_escape_string($_POST["organization"]);	
 	
-		$sql = "UPDATE employer SET email=:email, name=:name, organization=:organization WHERE id=:id";
+		$sql = "UPDATE employer SET email=:email, name=:name, organization=:organization WHERE employer_id=:id";
 		$q = $pdo -> prepare($sql);
 		$q -> execute(array(':email'=>$e, ':name'=>$n, ':organization'=>$o, ':id'=>$_SESSION["account"]));
 		
 		$_SESSION['success'] = 'Changes saved.';
-		header( 'Location: edit_account.php?id='.$_SESSION['account'] );
+		header( 'Location: edit_account.php?employer_id='.$_SESSION['account'] );
 		return;
 	}
 ?>

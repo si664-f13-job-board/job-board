@@ -18,7 +18,7 @@
 		$q = $pdo -> prepare($sql);
 		$q -> execute(array(':email'=>$e, ':password'=>$p, ':name'=>$n, ':organization'=>$o));
 		
-		$employer_id = $pdo->query("SELECT id FROM employer WHERE email='".$e."' AND password='".$p."'");
+		$employer_id = $pdo->query("SELECT employer_id FROM employer WHERE email='".$e."' AND password='".$p."'");
 		
 		$_SESSION['account'] = $employer_id;
 		$_SESSION['message'] = 'Account Created!';

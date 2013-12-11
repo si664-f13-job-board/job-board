@@ -6,13 +6,13 @@
         header( 'Location: login.php' ) ;
         return;
     }
-	if ( !isset($_GET["id"]) ) {
+	if ( !isset($_GET["listing_id"]) ) {
 		header( 'Location: my_listings.php' ) ;
 		return;
 	}
 	
 	$listing_result = $pdo->query("
-		SELECT listing.id
+		SELECT listing.listing_id
 			 , listing.employer_id
 			 , listing.title
 			 , listing.description
@@ -28,12 +28,12 @@
 			 , employer.organization
 		FROM   listing
 			   JOIN employer
-			   ON listing.employer_id = employer.id
-		WHERE  listing.id = ".$_GET["id"]." LIMIT 1");
+			   ON listing.employer_id = employer.employer_id
+		WHERE  listing.listing_id = ".$_GET["listing_id"]." LIMIT 1");
 		
 	$row = $listing_result -> fetch(PDO::FETCH_ASSOC);
 	
-	if ( !$row["id"] ) {
+	if ( !$row["listing_id"] ) {
 		header( 'Location: my_listings.php' ) ;
 		return;
 	}
@@ -43,7 +43,7 @@
 	}
 
 	if ( isset($_POST["listing_id"]) && isset($_POST["title"]) && isset($_POST["remote"]) && isset($_POST["paid"]) && isset($_POST["hours"]) && isset($_POST["name"]) && isset($_POST["email"]) && isset($_POST["link"]) && isset($_POST["end_date"]) && isset($_POST["description"]) && isset($_POST["skills"]) ) {
-		$id = mysql_real_escape_string($_POST["listing_id"]);
+		$listing_id = mysql_real_escape_string($_POST["listing_id"]);
 		$title = mysql_real_escape_string($_POST["title"]);
 		$remote = mysql_real_escape_string($_POST["remote"]);
 		$paid = mysql_real_escape_string($_POST["paid"]);
@@ -55,12 +55,12 @@
 		$description = mysql_real_escape_string($_POST["description"]);
 		$skills = mysql_real_escape_string($_POST["skills"]);
 	
-		$sql = "UPDATE listing SET title=:title, remote=:remote, paid=:paid; hours=:hours, name=:name, email=:email, link=:link end_date=:end_date, description=:description, skills=:skills WHERE id=:id AND employer_id=:employer_id";
+		$sql = "UPDATE listing SET title=:title, remote=:remote, paid=:paid; hours=:hours, name=:name, email=:email, link=:link end_date=:end_date, description=:description, skills=:skills WHERE listing_id=:listing_id AND employer_id=:employer_id";
 		$q = $pdo -> prepare($sql);
-		$q -> execute(array(':title'=>$title, ':remote'=>$remote, ':paid'=>$paid, ':hours'=>$hours, ':name'=>$name, ':email'=>$email, ':link'=>$link, ':end_date'=>$end_date, ':description'=>$description, ':skills'=>$skills, ':id'=>$id, ':employer_id'=>$_SESSION["account"]));
+		$q -> execute(array(':title'=>$title, ':remote'=>$remote, ':paid'=>$paid, ':hours'=>$hours, ':name'=>$name, ':email'=>$email, ':link'=>$link, ':end_date'=>$end_date, ':description'=>$description, ':skills'=>$skills, ':listing_id'=>$isting_id, ':employer_id'=>$_SESSION["account"]));
 		
 		$_SESSION['success'] = 'Changes saved.';
-		header( 'Location: edit_listing.php?id='.$id );
+		header( 'Location: edit_listing.php?listing_id='.$listing_id );
 		return;
 	}
 ?>
@@ -120,7 +120,7 @@
 				<div class="col2"><input type="text" name="skills" value="<?php echo(htmlentities($row['skills'])); ?>" required></div>
 			</div>
 			<div>
-				<input type="hidden" name="listing_id" value="<?php echo(htmlentities($_GET['id'])); ?>" required>
+				<input type="hidden" name="listing_id" value="<?php echo(htmlentities($_GET['listing_id'])); ?>" required>
 				<input class="create_button" type="submit" value="Save Changes">
 			</div>
 		</form>
