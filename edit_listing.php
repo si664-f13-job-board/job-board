@@ -96,18 +96,6 @@
 				<div class="col2"><input type="number" name="hours" value="<?php echo(htmlentities($row['hours'])); ?>" required></div>
 			</div>
 			<div>
-				<div class="col1"><label for="name">Name of Contact:</label></div>
-				<div class="col2"><input type="text" name="name" value="<?php echo(htmlentities($row['name'])); ?>" required></div>
-			</div>
-			<div>
-				<div class="col1"><label for="email">Contact Email:</label></div>
-				<div class="col2"><input type="email" name="email" value="<?php echo(htmlentities($row['email'])); ?>" required></div>
-			</div>
-			<div>
-				<div class="col1"><label for="link">Link to Listing:</label></div>
-				<div class="col2"><input type="text" name="link" value="<?php echo(htmlentities($row['link'])); ?>"></div>
-			</div>
-			<div>
 				<div class="col1"><label for="end_date">End Date:</label></div>
 				<div class="col2"><input type="date" name="end_date" value="<?php echo(htmlentities($row['end_date'])); ?>" required></div>
 			</div>
@@ -118,6 +106,18 @@
 			<div>
 				<div class="col1"><label for="skills">Skills Needed:</label></div>
 				<div class="col2"><input type="text" name="skills" value="<?php echo(htmlentities($row['skills'])); ?>" required></div>
+			</div>
+			<div>
+				<div class="col1"><label for="name">Name of Contact:</label></div>
+				<div class="col2"><input type="text" name="name" value="<?php echo(htmlentities($row['name'])); ?>" required></div>
+			</div>
+			<div>
+				<div class="col1"><label for="email">Contact Email:</label></div>
+				<div class="col2"><input type="email" name="email" value="<?php echo(htmlentities($row['email'])); ?>" required></div>
+			</div>
+			<div>
+				<div class="col1"><label for="link">Link to Listing:</label></div>
+				<div class="col2"><input type="text" name="link" value="<?php echo(htmlentities($row['link'])); ?>"></div>
 			</div>
 			<div>
 				<input type="hidden" name="listing_id" value="<?php echo(htmlentities($_GET['listing_id'])); ?>" required>
