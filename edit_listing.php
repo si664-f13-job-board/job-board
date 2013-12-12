@@ -56,8 +56,6 @@
 		$skills = mysql_real_escape_string($_POST["skills"]);
 		$employer_id = $_SESSION["account"];
 
-		// var_dump($employer_id);
-
 		$sql = "UPDATE listing SET title=:title, remote=:remote, paid=:paid, hours=:hours, name=:name, email=:email, link=:link, end_date=:end_date, description=:description, skills=:skills WHERE listing_id=:listing_id AND employer_id=:employer_id";
 		$q = $pdo -> prepare($sql);
 		$q -> execute(array(':title'=>$title, ':remote'=>$remote, ':paid'=>$paid, ':hours'=>$hours, ':name'=>$name, ':email'=>$email, ':link'=>$link, ':end_date'=>$end_date, ':description'=>$description, ':skills'=>$skills, ':listing_id'=>$listing_id, ':employer_id'=>$employer_id));
