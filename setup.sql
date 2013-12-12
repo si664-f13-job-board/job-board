@@ -43,4 +43,6 @@ INSERT INTO employer (email, password, name, organization) VALUES (
 INSERT INTO listing (employer_id, title, remote, paid, hours, post_date, end_date, link, description, skills, name, email) VALUES (
 	'1', 'Test Listing 1', '1', '0', '8', '20010101', '20020101', 'http://www.lordoftherings.net/', 'Description goes here.', 'HTML, CSS, Javascript', 'Gandalf', 'gandalf@lordoftherings.net');
 INSERT INTO listing (employer_id, title, remote, paid, hours, post_date, end_date, link, description, skills, name, email) VALUES (
+	'1', 'Test Listing 1_1', '1', '0', '8', '20010101', '20020101', 'http://www.lordoftherings.net/', 'Description goes here.', 'HTML, CSS, Javascript', 'Gandalf', 'gandalf@lordoftherings.net');
+INSERT INTO listing (employer_id, title, remote, paid, hours, post_date, end_date, link, description, skills, name, email) VALUES (
 	'2', 'Test Listing 2', '0', '1', '40', '20010101', '20020101', 'http://www.lordoftherings.net/', 'Description goes here.', 'PHP, MySQL', 'Sauron', 'sauron@lordoftherings.net');
