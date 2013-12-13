@@ -1,26 +1,42 @@
 <?php
+	if('POST' === $_SERVER['REQUEST_METHOD']) {
+	
 	require_once "db.php";
     session_start();
     unset($_SESSION["account"]);
-    if ( isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["name"]) && isset($_POST["organization"]) ) {
+    
+	$values = array();
+	foreach (array('email', 'password', 'name', 'organization') as $k) {
+		$values[":$k"] = issest ($_POST[$k]) ? $_POST[$k] : '';
+		if(empty($alues[":$k"])) {
+			$_SESSION['message'] = 'Bad value for email, password, name, or organization.';
+			header( 'Location: create_account.php' );
+			return;
+		}
+	}
+	/*if ( isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["name"]) && isset($_POST["organization"]) ) {
 		$e = mysql_real_escape_string($_POST["email"]);
 		$p = mysql_real_escape_string($_POST["password"]);
 		$n = mysql_real_escape_string($_POST["name"]);
 		$o = mysql_real_escape_string($_POST["organization"]);
 		
+				
 		if ( strlen($e) == 0 || strlen($p) == 0 || strlen($n) == 0 || strlen($o) == 0) {
 			$_SESSION['message'] = 'Bad value for email, password, name, or organization.';
 			header( 'Location: create_account.php' );
 			return;
-		}
+		}*/
 		
 		$sql = "INSERT INTO employer (email, password, name, organization) VALUES (:email, :password, :name, :organization)";
 		$q = $pdo -> prepare($sql);
-		$q -> execute(array(':email'=>$e, ':password'=>$p, ':name'=>$n, ':organization'=>$o));
+		$q -> execute(array(':email'=>$email, ':password'=>$password, ':name'=>$name, ':organization'=>$organization));
 		
-		$employer_id = $pdo->query("SELECT employer_id FROM employer WHERE email='".$e."' AND password='".$p."'");
+		$sql = "SELECT employer_id FROM employer WHERE email = :email AND password = :password";
+		$q = $pdo -> prepare($sql);
+		$q -> execute(array (':email' => $values[':email'], ':password' => $values[':password']));
+		$row = $q -> fetch(PDO::FETCH_ASSOC);
 		
-		$_SESSION['account'] = $employer_id;
+		$_SESSION['account'] = $row['employer_id'];
 		$_SESSION['message'] = 'Account Created!';
 		header( 'Location: login.php' );
 	}
