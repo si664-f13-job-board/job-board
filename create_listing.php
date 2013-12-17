@@ -33,35 +33,58 @@ if('POST' === $_SERVER['REQUEST_METHOD']) {
  </div>
  <div class="listing_container listing_box">
 	<form method="post">
-	<div class="col1">
-		<label for="title">Position Title:</label><br/>
-		<label for="remote">Remote Work:</label><br />
-		<label for="paid">Paid:</label><br />
-		<label for="hours">Hours per Week:</label><br />
-		<label for="name">Name of Contact:</label><br />
-		<label for="email">Contact Email:</label><br />
-		<label for="link">Link to Listing:</label><br />
-		<label for="end_date">End Date: </label><br />
-		<label for="description">Brief Description: </label><br />
-		<label for="skills">Skills Needed:</label><br />
-   </div>
-	<div class="col2">
-		<input type="text" name="title" required><br />
-		<select name="remote"> <option value="1">Yes</option> <option value ="2"> No </option></select>required<br />
-		<select name="paid"> <option value="1">Yes</option> <option value ="2"> No </option></select>required<br />
-		<input type="number" name="hours" required><br />
-		<input type="text" name="name" required><br />
-		<input type="email" name="email" required><br />
-		<input type="text" name="link" ><br />
-		<input type="date" name="end_date" required><br />
-		<input type="text" name="description" required><br />
-		<input type="text" name="skills" required><br />
+	<div>
+		<div class="col1"><label for="title">Position Title:</label></div>
+		<div class="col2"><input type="text" name="title" required></div>
+	</div>
+	<div>
+		<div class="col1"><label for="remote">Remote Work:</label></div>
+		<div class="col2"><select name="remote"> <option value="1">Yes</option> <option value ="2"> No </option></select>required
+		</div>
+	</div>
+	<div>
+		<div class="col1"><label for="paid">Paid:</label></div>
+		<div class="col2"><select name="paid"> <option value="1">Yes</option> <option value ="2"> No </option></select>required</div>
+	</div>
+	<div>
+		<div class="col1"><label for="hours">Hours per Week:</label></div>
+		<div class="col2"><input type="number" name="hours" required></div>
+	</div>
+	<div>
+		<div class="col1"><label for="name">Name of Contact:</label></div>
+		<div class="col2"><input type="text" name="name" required></div>
+	</div>
+	<div>
+		<div class="col1"><label for="email">Contact Email:</label></div>
+		<div class="col2"><input type="email" name="email" required></div>
+	</div>
+	<div>
+		<div class="col1"><label for="link">Link to Listing:</label></div>
+		<div class="col2"><input type="text" name="link" ></div>
+	</div>
+	<div>
+		<div class="col1"><label for="end_date">End Date: </label></div>
+		<div class="col2"><input type="date" name="end_date" required></div>
+	</div>
+	<div>
+		<div class="col1"><label for="description">Brief Description: </label></div>
+		<div class="col2"><input type="text" name="description" required></div>
+	</div>
+	<div>
+		<div class="col1"><label for="skills">Skills Needed:</label></div>
+		<div class="col2"><input type="text" name="skills" required></div>
+	</div>
+	<div>
 		<input class="create_button" type="submit" value="Create Listing">
    </div>
  </form>
- <?php if(isset($_SESSION['message'])) { ?>
- <div><h4><?php echo $_SESSION['message']; ?></h4></div>
- <?php unset($_SESSION['message']); } ?>
+ 	<?php
+		if ( isset($_SESSION["success"]) ) {
+			echo('<p style="color:green">'.$_SESSION["success"]."</p>\n");
+			unset($_SESSION["success"]);
+		}
+	?>
+
 </div>
 </div>
 </body>
