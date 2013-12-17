@@ -36,7 +36,7 @@
 			       JOIN employer
 				   ON listing.employer_id = employer.employer_id
 			WHERE  listing.end_date > NOW()
-			ORDER BY listing.post_date ASC");
+			ORDER BY listing.post_date DESC");
 
 		while($row = $listing_results -> fetch(PDO::FETCH_ASSOC)){
 			echo '<div class="job_listing">';
