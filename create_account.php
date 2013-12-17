@@ -1,35 +1,23 @@
 <?php
 	if('POST' === $_SERVER['REQUEST_METHOD']) {
 	
-	require_once "db.php";
-    session_start();
-    unset($_SESSION["account"]);
-    
-	$values = array();
-	foreach (array('email', 'password', 'name', 'organization') as $k) {
-		$values[":$k"] = issest ($_POST[$k]) ? $_POST[$k] : '';
-		if(empty($alues[":$k"])) {
-			$_SESSION['message'] = 'Bad value for email, password, name, or organization.';
-			header( 'Location: create_account.php' );
-			return;
-		}
-	}
-	/*if ( isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["name"]) && isset($_POST["organization"]) ) {
-		$e = mysql_real_escape_string($_POST["email"]);
-		$p = mysql_real_escape_string($_POST["password"]);
-		$n = mysql_real_escape_string($_POST["name"]);
-		$o = mysql_real_escape_string($_POST["organization"]);
+		require_once "db.php";
+		session_start();
+		unset($_SESSION["account"]);
 		
-				
-		if ( strlen($e) == 0 || strlen($p) == 0 || strlen($n) == 0 || strlen($o) == 0) {
-			$_SESSION['message'] = 'Bad value for email, password, name, or organization.';
-			header( 'Location: create_account.php' );
-			return;
-		}*/
+		$values = array();
+		foreach (array('email', 'password', 'name', 'organization') as $k) {
+			$values[":$k"] = isset ($_POST[$k]) ? $_POST[$k] : '';
+			if(empty($values[":$k"])) {
+				$_SESSION['message'] = 'Bad value for email, password, name, or organization.';
+				header( 'Location: create_account.php' );
+				return;
+			}
+		}
 		
 		$sql = "INSERT INTO employer (email, password, name, organization) VALUES (:email, :password, :name, :organization)";
 		$q = $pdo -> prepare($sql);
-		$q -> execute(array(':email'=>$email, ':password'=>$password, ':name'=>$name, ':organization'=>$organization));
+		$q -> execute(array(':email'=>$values[':email'], ':password'=>$values[':password'], ':name'=>$values[':name'], ':organization'=>$values[':organization']));
 		
 		$sql = "SELECT employer_id FROM employer WHERE email = :email AND password = :password";
 		$q = $pdo -> prepare($sql);
