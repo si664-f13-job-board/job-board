@@ -16,7 +16,7 @@ if('POST' === $_SERVER['REQUEST_METHOD']) {
       return;
     }
   }
-  $q = $pdo->prepare("INSERT INTO listing(employer_id, title, remote, paid, hours, name, email, link, end_date, description, skills) VALUES (:employer_id, :title, :remote, :paid, :hours, :name, :email, :link, :end_date, :description, :skills)");
+  $q = $pdo->prepare("INSERT INTO listing(employer_id, title, remote, paid, hours, name, email, link, post_date, end_date, description, skills) VALUES (:employer_id, :title, :remote, :paid, :hours, :name, :email, :link, NOW(), :end_date, :description, :skills)");
   $q -> execute($values);
   $_SESSION['message'] = 'Listing Created!';
   header( 'Location: my_listings.php');
@@ -39,12 +39,12 @@ if('POST' === $_SERVER['REQUEST_METHOD']) {
 	</div>
 	<div>
 		<div class="col1"><label for="remote">Remote Work:</label></div>
-		<div class="col2"><select name="remote"> <option value="1">Yes</option> <option value ="2"> No </option></select>required
+		<div class="col2"><select name="remote"> <option value="1">Yes</option> <option value ="2"> No </option></select> required
 		</div>
 	</div>
 	<div>
 		<div class="col1"><label for="paid">Paid:</label></div>
-		<div class="col2"><select name="paid"> <option value="1">Yes</option> <option value ="2"> No </option></select>required</div>
+		<div class="col2"><select name="paid"> <option value="1">Yes</option> <option value ="2"> No </option></select> required</div>
 	</div>
 	<div>
 		<div class="col1"><label for="hours">Hours per Week:</label></div>
